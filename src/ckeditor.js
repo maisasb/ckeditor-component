@@ -28,8 +28,16 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Mention from '@ckeditor/ckeditor5-mention/src/mention';
+import LineHeight from 'ckeditor5-line-height-plugin/src/lineheight';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+export default class ClassicEditor extends ClassicEditorBase { }
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
@@ -54,7 +62,15 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Base64UploadAdapter,
+	ImageResize,
+	Alignment,
+	RemoveFormat,
+	Font,
+	Underline,
+	Mention,
+	LineHeight
 ];
 
 // Editor configuration.
@@ -63,8 +79,12 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'lineHeight',
 			'bold',
 			'italic',
+			'underline',
+			'alignment',
+			'fontColor',
 			'link',
 			'bulletedList',
 			'numberedList',
@@ -77,15 +97,22 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'removeFormat'
 		]
 	},
 	image: {
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
+			'imageTextAlternative',
 			'|',
-			'imageTextAlternative'
+			'imageStyle:alignLeft',
+			'imageStyle:full',
+			'imageStyle:alignRight'
+		],
+		styles: [
+			'full',
+			'alignLeft',
+			'alignRight'
 		]
 	},
 	table: {
@@ -95,6 +122,10 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	lineHeight: {
+		options: [0.5, 1, 1.5, 2, 2.5]
+	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'en',
+	toolbarCanCollapse: true
 };
