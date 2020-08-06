@@ -36,6 +36,7 @@ import Font from '@ckeditor/ckeditor5-font/src/font';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
 import LineHeight from 'ckeditor5-line-height-plugin/src/lineheight';
+import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
 
 export default class ClassicEditor extends ClassicEditorBase { }
 
@@ -70,7 +71,8 @@ ClassicEditor.builtinPlugins = [
 	Font,
 	Underline,
 	Mention,
-	LineHeight
+	LineHeight,
+	SimpleUploadAdapter
 ];
 
 // Editor configuration.
@@ -123,7 +125,7 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	lineHeight: {
-		options: [0.5, 1, 1.5, 2, 2.5]
+		options: [ 0.5, 1, 1.5, 2, 2.5 ]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en',

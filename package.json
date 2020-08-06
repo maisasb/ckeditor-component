@@ -1,6 +1,6 @@
 {
   "name": "ckeditor5-build-classic-image",
-  "version": "16.0.7",
+  "version": "16.0.8",
   "description": "The classic editor build of CKEditor 5 – with image upload.",
   "keywords": [
     "ckeditor5-build",
